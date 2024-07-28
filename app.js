@@ -12,7 +12,7 @@ profileContainer.innerHTML = `
 
     <div>
         <img src="${user1.coverPhotoURL}" alt="background image">
-        <img src="${user1.avatarURL}" alt="avatar">
+        <img src="${user1.avatarURL}" alt="avatar" class="avatar">
     </div>
 
     <div class="profile-info">
