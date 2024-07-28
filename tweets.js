@@ -4,8 +4,8 @@ var user1 = {
     joinedDate: 'June 2009',
     followingCount: 103,
     followerCount: 47900000,
-    avatarURL: 'assets/elonmusk.jpg',
-    coverPhotoURL: 'assets/elonmusk-cover.jpeg',
+    avatarURL: './assets/elonmusk.jpg',
+    coverPhotoURL: './assets/elonmusk-cover.jpeg',
     tweets: [
         {
             text: 'I admit to judging books by their cover',
@@ -28,8 +28,8 @@ var user2 = {
     joinedDate: 'June 2009',
     followingCount: 274,
     followerCount: 53800000,
-    avatarURL: 'assets/billgates.jpg',
-    coverPhotoURL: 'assets/billgates-cover.jpeg',
+    avatarURL: './assets/billgates.jpg',
+    coverPhotoURL: './assets/billgates-cover.jpeg',
     tweets: [
         {
             text: 'Everybody asks, how is the next Windows coming along? But nobody asks how is Bill? :/',

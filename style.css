@@ -1,0 +1,20 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.profile-container{
+  border: 1px solid tomato;
+
+}
+
+.profile-stats {
+  display: flex;
+  column-gap: 30px;
+}
+
+.profile-columns {
+  display: flex;
+  justify-content: space-between;
+}
