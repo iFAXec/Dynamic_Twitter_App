@@ -4,8 +4,8 @@ var user1 = {
     joinedDate: 'June 2009',
     followingCount: 103,
     followerCount: 47900000,
-    avatarURL: './assets/elonmusk.jpg',
-    coverPhotoURL: './assets/elonmusk-cover.jpeg',
+    avatarURL: 'assets/elonmusk.jpg',
+    coverPhotoURL: 'assets/elonmusk-cover.jpeg',
     tweets: [
         {
             text: 'I admit to judging books by their cover',
