@@ -42,6 +42,7 @@ html {
 
 .profile-info {
   margin-top: -30px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -60,10 +61,13 @@ html {
   background-color: #41a2f4;
   width: 150px;
   height: 40px;
+  margin: 10px 10px 0;
   border-radius: 20px;
   border: none;
   font-weight: bold;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .profile-info h3 {
@@ -72,12 +76,13 @@ html {
 
 .calendar-icon::before {
   content: "\1F4C5";
+  margin-right: 5px;
 }
 
 .profile-stats {
   display: flex;
   column-gap: 30px;
-  margin-top: 10px;
+  margin: 10px 0 0 20px;
 }
 
 .profile-stats p {
@@ -89,10 +94,23 @@ html {
   color: black;
 }
 
-.profile-columns {
+.twitter-tabs {
   display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  color: grey;
+  justify-content: space-around;
   margin-top: 30px;
+}
+
+.twitter-tab {
+  border: none;
+  background: none;
+  border-bottom: 2px solid #41a2f4;
+  width: 100%;
+  max-width: 150px;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.twitter-tab:hover {
+  background-color: rgba(65, 162, 244, 0.1);
 }

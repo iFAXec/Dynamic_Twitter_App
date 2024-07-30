@@ -1,6 +1,6 @@
 import { user1 } from './tweets.js';
 
-const profileContainer = document.getElementById('container');
+const mainContainer = document.getElementById('main-container');
 
 function formatNumber(num) {
     if (num >= 1000000) {
@@ -12,9 +12,14 @@ function formatNumber(num) {
     return num.toString();
 }
 
-profileContainer.innerHTML = `
 
-<div class="profile-container">
+
+
+
+
+
+mainContainer.innerHTML = `
+
     <div class = 'display-name'>
         <img src='/assets/left-arrow.png' alt='left-arrow' class = 'left-arrow' >
         <h2>${user1.displayName}</h2>
@@ -46,20 +51,31 @@ profileContainer.innerHTML = `
         <p> <span> ${formatNumber(user1.followerCount)} </span> Followers</p>
     </div>
 
-    <div class="profile-columns">
-        <p>Tweets</p>
-        <p>Tweets & Replies</p>
-        <p>Media</p>
-        <p>Likes</p>
+    <div class="twitter-tabs">
+        <button class='twitter-tab tweets-tab' >Tweets</button>
+        <button class='twitter-tab' >Tweets & replies</button>
+        <button class='twitter-tab' >Media</button>
+        <button class='twitter-tab' >Likes</button>
     </div>
-
-</div>
-
-
-
 
 `
 
+const tweetsContainer = document.querySelector('.tweets-tab');
+console.log(tweetsContainer)
+
+user1.tweets.forEach(tweet => {
+    console.log(tweet.text);
+    const tweetDiv = document.createElement('div');
+    tweetDiv.innerHTML = `
+    <p>${tweet.text}</p>
+    `
+    tweetsContainer.appendChild(tweetDiv);
+})
+
+// tweetsContainer.addEventListener(click, ()=>{
+//     tweetsContainer.appendChild(tweetDiv.cloneNode(true))
+
+// });
 
 
 
