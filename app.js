@@ -61,21 +61,28 @@ mainContainer.innerHTML = `
 `
 
 const tweetsContainer = document.querySelector('.tweets-tab');
-console.log(tweetsContainer)
+const tweetsList = document.createElement('div')
+tweetsList.classList.add('tweets-list');
+tweetsContainer.appendChild(tweetsList);
 
-user1.tweets.forEach(tweet => {
-    console.log(tweet.text);
-    const tweetDiv = document.createElement('div');
-    tweetDiv.innerHTML = `
-    <p>${tweet.text}</p>
-    `
-    tweetsContainer.appendChild(tweetDiv);
+
+tweetsContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('tweets-tab')) {
+        tweetsList.innerHTML = '';
+
+        user1.tweets.forEach(tweet => {
+            const tweetDiv = document.createElement('div');
+            tweetDiv.innerHTML = `
+            <p>${tweet.text}</p>
+            `
+            tweetsList.appendChild(tweetDiv);
+        })
+    }
 })
 
-// tweetsContainer.addEventListener(click, ()=>{
-//     tweetsContainer.appendChild(tweetDiv.cloneNode(true))
 
-// });
+
+
 
 
 
