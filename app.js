@@ -1,6 +1,8 @@
-import { user1 } from './tweets.js';
+import * as users from './tweets.js';
 
 const mainContainer = document.getElementById('main-container');
+
+// console.log(users)
 
 /**
  * Formats   number by adding appropriate suffix (K for 1000 and M for millions).
@@ -18,36 +20,48 @@ function formatNumber(num) {
     return num.toString();
 }
 
+
+function getQueryParam(param) {
+    const urlParam = new URLSearchParams(window.location.search);
+    return urlParam.get(param);
+}
+
+const userParam = getQueryParam('user');
+const user = users[userParam];
+// console.log(user);
+
+
+
 mainContainer.innerHTML = `
 
     <div class = 'display-name'>
         <img src='/assets/left-arrow.png' alt='left-arrow' class = 'left-arrow' >
-        <h2>${user1.displayName}</h2>
+        <h2>${user.displayName}</h2>
         <img  src='./assets/twitter-verification-icon.png' alt='verification-icon' class=verification-icon>
     </div>
 
     <div >
-        <img src="${user1.coverPhotoURL}" alt="background image" class='background-image'  >
+        <img src="${user.coverPhotoURL}" alt="background image" class='background-image'  >
 
         <div class='follow-container'>
-        <img src="${user1.avatarURL}" alt="avatar" class="avatar">
+        <img src="${user.avatarURL}" alt="avatar" class="avatar">
         <button class='follow-button' > Following </button>
         </div>
     </div>
 
     <div class="profile-info">
         <div class='profile-info-name'>
-            <h3>${user1.displayName}</h3>
+            <h3>${user.displayName}</h3>
             <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
         </div>
 
-        <p>${user1.userName}</p>
-        <p class='calendar-icon' >Joined ${user1.joinedDate}</p>
+        <p>${user.userName}</p>
+        <p class='calendar-icon' >Joined ${user.joinedDate}</p>
     </div>
 
     <div class="profile-stats">
-        <p> <span>${formatNumber(user1.followingCount)} </span> Following</p>
-        <p> <span> ${formatNumber(user1.followerCount)} </span> Followers</p>
+        <p> <span>${formatNumber(user.followingCount)} </span> Following</p>
+        <p> <span> ${formatNumber(user.followerCount)} </span> Followers</p>
     </div>
 
     <div class="twitter-tabs">
@@ -62,23 +76,22 @@ mainContainer.innerHTML = `
 
 const tweetsContainer = document.querySelector('.tweets-tab');
 const tweetsList = document.querySelector('.tweets-list');
-console.log("🚀 ~ tweetsList:", tweetsList);
 
 
 tweetsContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('tweets-tab')) {
         tweetsList.innerHTML = '';
 
-        user1.tweets.forEach(tweet => {
+        user.tweets.forEach(tweet => {
             const tweetDiv = document.createElement('div');
             tweetDiv.innerHTML = `
             <div class="tweet-list-container">
-                <img src="${user1.avatarURL}" alt="avatar" class="tweet-avatar">
+                <img src="${user.avatarURL}" alt="avatar" class="tweet-avatar">
               <div class="tweet-content-wrapper">
                     <div class="tweet-header">
-                        ${user1.displayName}
+                        ${user.displayName}
                         <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
-                        ${user1.userName}
+                        ${user.userName}
                     </div>
                     <p class = tweet-content> ${tweet.text}</p>
                </div>
