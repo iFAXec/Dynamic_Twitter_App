@@ -18,15 +18,6 @@ function formatNumber(num) {
     return num.toString();
 }
 
-// function twitterProfileName() {
-//     return ` <h3>${user1.displayName}</h3>
-//             <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' ></img>
-//             <p>${user1.userName}</p>
-//             `
-// }
-
-
-
 mainContainer.innerHTML = `
 
     <div class = 'display-name'>
@@ -81,7 +72,15 @@ tweetsContainer.addEventListener('click', (event) => {
         user1.tweets.forEach(tweet => {
             const tweetDiv = document.createElement('div');
             tweetDiv.innerHTML = `
-            <p>${tweet.text}</p>
+            <div class="tweet-list-container">
+                <img src="${user1.avatarURL}" alt="avatar" class="tweet-avatar">
+                <div class="tweet-header">
+                ${user1.displayName}
+                <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
+                ${user1.userName}
+                </div>
+                <p class = tweet-content> ${tweet.text}</p>
+            </div>
             `
             tweetsList.appendChild(tweetDiv);
         })
