@@ -123,5 +123,23 @@ html {
 
 .tweet-list-container {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid lightgray;
+  padding: 50px;
+}
+
+.tweet-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tweet-content {
+  margin-top: 5px;
 }
