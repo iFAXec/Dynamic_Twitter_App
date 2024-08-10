@@ -2,6 +2,12 @@ import { user1 } from './tweets.js';
 
 const mainContainer = document.getElementById('main-container');
 
+/**
+ * Formats   number by adding appropriate suffix (K for 1000 and M for millions).
+ * @param {*} num - the num to be formatted, it checks if the num is greater than  or equal to 1000 or 1000000
+ * @returns - the formatted number with the appropriate suffix. If he num is less than 1000, it returns the num as a string.
+ */
+
 function formatNumber(num) {
     if (num >= 1000000) {
         return (num / 1000000).toFixed(1) + 'M';
@@ -12,9 +18,12 @@ function formatNumber(num) {
     return num.toString();
 }
 
-
-
-
+// function twitterProfileName() {
+//     return ` <h3>${user1.displayName}</h3>
+//             <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' ></img>
+//             <p>${user1.userName}</p>
+//             `
+// }
 
 
 
@@ -40,10 +49,9 @@ mainContainer.innerHTML = `
             <h3>${user1.displayName}</h3>
             <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
         </div>
+
         <p>${user1.userName}</p>
-
         <p class='calendar-icon' >Joined ${user1.joinedDate}</p>
-
     </div>
 
     <div class="profile-stats">
@@ -58,12 +66,12 @@ mainContainer.innerHTML = `
         <button class='twitter-tab' >Likes</button>
     </div>
 
+    <div class="tweets-list"></div>
 `
 
 const tweetsContainer = document.querySelector('.tweets-tab');
-const tweetsList = document.createElement('div')
-tweetsList.classList.add('tweets-list');
-tweetsContainer.appendChild(tweetsList);
+const tweetsList = document.querySelector('.tweets-list');
+console.log("🚀 ~ tweetsList:", tweetsList);
 
 
 tweetsContainer.addEventListener('click', (event) => {
@@ -79,9 +87,6 @@ tweetsContainer.addEventListener('click', (event) => {
         })
     }
 })
-
-
-
 
 
 
