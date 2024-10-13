@@ -2,7 +2,6 @@ import * as users from './tweets.js';
 
 const mainContainer = document.getElementById('main-container');
 
-// console.log(users)
 
 /**
  * Formats   number by adding appropriate suffix (K for 1000 and M for millions).
@@ -94,14 +93,28 @@ tweetsContainer.addEventListener('click', (event) => {
                         ${user.userName}
                     </div>
                     <p class = tweet-content> ${tweet.text}</p>
+
                </div>
             </div>
             `
+
             tweetsList.appendChild(tweetDiv);
         })
     }
 })
 
+
+const timeLine = document.getElementsByClassName('timeline');
+
+console.log(timeLine);
+
+for (const key in users) {
+    console.log(users[key]);
+    timeLine.innerHTML += `
+       ${key.tweets}
+
+    `
+}
 
 
 
