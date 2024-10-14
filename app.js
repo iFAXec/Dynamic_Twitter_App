@@ -1,5 +1,7 @@
 import * as users from './tweets.js';
 
+// console.log(users);
+
 const mainContainer = document.getElementById('main-container');
 
 
@@ -35,32 +37,32 @@ mainContainer.innerHTML = `
 
     <div class = 'display-name'>
         <img src='/assets/left-arrow.png' alt='left-arrow' class = 'left-arrow' >
-        <h2>${user.displayName}</h2>
+        <h2>${users.users['@elonmusk'].displayName}</h2>
         <img  src='./assets/twitter-verification-icon.png' alt='verification-icon' class=verification-icon>
     </div>
 
     <div >
-        <img src="${user.coverPhotoURL}" alt="background image" class='background-image'  >
+        <img src="${users.users['@elonmusk'].coverPhotoURL}" alt="background image" class='background-image'  >
 
         <div class='follow-container'>
-        <img src="${user.avatarURL}" alt="avatar" class="avatar">
+        <img src="${users.users['@elonmusk'].avatarURL}" alt="avatar" class="avatar">
         <button class='follow-button' > Following </button>
         </div>
     </div>
 
     <div class="profile-info">
         <div class='profile-info-name'>
-            <h3>${user.displayName}</h3>
+            <h3>${users.users['@elonmusk'].displayName}</h3>
             <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
         </div>
 
-        <p>${user.userName}</p>
-        <p class='calendar-icon' >Joined ${user.joinedDate}</p>
+        <p>${users.users['@elonmusk'].userName}</p>
+        <p class='calendar-icon' >Joined ${users.users['@elonmusk'].joinedDate}</p>
     </div>
 
     <div class="profile-stats">
-        <p> <span>${formatNumber(user.followingCount)} </span> Following</p>
-        <p> <span> ${formatNumber(user.followerCount)} </span> Followers</p>
+        <p> <span>${formatNumber(users.users['@elonmusk'].followingCount)} </span> Following</p>
+        <p> <span> ${formatNumber(users.users['@elonmusk'].followerCount)} </span> Followers</p>
     </div>
 
     <div class="twitter-tabs">
@@ -81,9 +83,15 @@ tweetsContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('tweets-tab')) {
         tweetsList.innerHTML = '';
 
-        user.tweets.forEach(tweet => {
-            const tweetDiv = document.createElement('div');
-            tweetDiv.innerHTML = `
+
+
+        for (const userName in users) {
+            const user = users[userName];
+            console.log(user);
+
+            user.tweets.forEach(tweet => {
+                const tweetDiv = document.createElement('div');
+                tweetDiv.innerHTML = `
             <div class="tweet-list-container">
                 <img src="${user.avatarURL}" alt="avatar" class="tweet-avatar">
               <div class="tweet-content-wrapper">
@@ -98,23 +106,24 @@ tweetsContainer.addEventListener('click', (event) => {
             </div>
             `
 
-            tweetsList.appendChild(tweetDiv);
-        })
+                tweetsList.appendChild(tweetDiv);
+            })
+        }
+
     }
 })
 
 
 const timeLine = document.getElementsByClassName('timeline');
 
-console.log(timeLine);
 
-for (const key in users) {
-    console.log(users[key]);
-    timeLine.innerHTML += `
-       ${key.tweets}
+// for (const key in users) {
+//     console.log(users[key]);
+//     timeLine.innerHTML += `
+//        ${key.tweets}
 
-    `
-}
+//     `
+// }
 
 
 
