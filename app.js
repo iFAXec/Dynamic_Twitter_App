@@ -86,9 +86,7 @@ tweetsContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('tweets-tab')) {
         tweetsList.innerHTML = '';
 
-        console.log(users.users['@elonmusk'].tweets);
-
-
+        // console.log(users.users['@elonmusk'].tweets);
 
         users.users['@elonmusk'].tweets.forEach(tweet => {
             const tweetDiv = document.createElement('div');
@@ -124,25 +122,42 @@ tweetsContainer.addEventListener('click', (event) => {
 
 
 
-
-
-
-
-
-
-
-
-
 const timeLine = document.getElementsByClassName('timeline');
 
-
-// for (const key in users) {
-//     console.log(users[key]);
-//     timeLine.innerHTML += `
-//        ${key.tweets}
-
-//     `
-// }
+function sortTweetsByDate(tweets) {
+    return tweets.sort((a, b) => {
+        return new Date(b.timestamp) - new Date(a.timestamp);
+    });
+}
 
 
+let sortedTweets = sortTweetsByDate(users.users['@elonmusk'].tweets);
+
+
+// console.log(sortedTweets);
+
+
+sortedTweets.forEach(tweet => {
+    const sortedTweetDiv = document.createElement('div');
+    sortedTweetDiv.innerHTML = `
+
+    <div> class="sorted-tweet-list-container">
+        <img src="${users.users['@elonmusk'].avatarURL}" alt="avatar" class="tweet-avatar">
+        <div class="sorted-tweet-content-wrapper">
+                <div class="tweet-header">
+                        ${users.users['@elonmusk'].displayName}
+                        <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
+                        ${users.users['@elonmusk'].userName}
+                </div>
+                    <p class = tweet-content> ${tweet.text}</p>
+                <div class="tweet-footer-time">
+                    ${tweet.timestamp}
+                </div>
+                </div>
+
+            </div>
+            `;
+    console.log(sortedTweetDiv);
+    // timeLine.appendChild(sortedTweetDiv);
+});
 
