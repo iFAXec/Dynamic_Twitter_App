@@ -27,6 +27,7 @@ function getQueryParam(param) {
     return urlParam.get(param);
 }
 
+
 const userParam = getQueryParam('user');
 const user = users[userParam];
 // console.log(user);
@@ -78,40 +79,58 @@ mainContainer.innerHTML = `
 const tweetsContainer = document.querySelector('.tweets-tab');
 const tweetsList = document.querySelector('.tweets-list');
 
+// console.log(users)
+
 
 tweetsContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('tweets-tab')) {
         tweetsList.innerHTML = '';
 
+        console.log(users.users['@elonmusk'].tweets);
 
 
-        for (const userName in users) {
-            const user = users[userName];
-            console.log(user);
 
-            user.tweets.forEach(tweet => {
-                const tweetDiv = document.createElement('div');
-                tweetDiv.innerHTML = `
+        users.users['@elonmusk'].tweets.forEach(tweet => {
+            const tweetDiv = document.createElement('div');
+            tweetDiv.innerHTML = `
             <div class="tweet-list-container">
-                <img src="${user.avatarURL}" alt="avatar" class="tweet-avatar">
+                <img src="${users.users['@elonmusk'].avatarURL}" alt="avatar" class="tweet-avatar">
               <div class="tweet-content-wrapper">
                     <div class="tweet-header">
-                        ${user.displayName}
+                        ${users.users['@elonmusk'].displayName}
                         <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
-                        ${user.userName}
-                    </div>
+                        ${users.users['@elonmusk'].userName}
+                </div>
                     <p class = tweet-content> ${tweet.text}</p>
+                <div class="tweet-footer-icons">
+                    <img src="/assets/comment.png" alt="comment-icon" class="tweet-icon">
+                    <img src="/assets/retweet.png" alt="retweet-icon" class="tweet-icon">
+                    <img src="/assets/heart.png" alt="heart-icon" class="tweet-icon">
+                    <img src="/assets/share.png" alt="share-icon" class="tweet-icon">
+                </div>
+                <div class="tweet-footer-time">
+                    ${tweet.timestamp}
+                </div>
+                </div>
 
-               </div>
             </div>
-            `
+            `;
+            tweetsList.appendChild(tweetDiv);
 
-                tweetsList.appendChild(tweetDiv);
-            })
-        }
+        });
+    };
+}
+);
 
-    }
-})
+
+
+
+
+
+
+
+
+
 
 
 const timeLine = document.getElementsByClassName('timeline');
