@@ -1,6 +1,4 @@
-import * as users from './tweets.js';
-
-// console.log(users);
+import { users } from './tweets.js';
 
 const mainContainer = document.getElementById('main-container');
 
@@ -38,32 +36,32 @@ mainContainer.innerHTML = `
 
     <div class = 'display-name'>
         <img src='/assets/left-arrow.png' alt='left-arrow' class = 'left-arrow' >
-        <h2>${users.users['@elonmusk'].displayName}</h2>
+        <h2>${user.displayName}</h2>
         <img  src='./assets/twitter-verification-icon.png' alt='verification-icon' class=verification-icon>
     </div>
 
     <div >
-        <img src="${users.users['@elonmusk'].coverPhotoURL}" alt="background image" class='background-image'  >
+        <img src="${user.coverPhotoURL}" alt="background image" class='background-image'  >
 
         <div class='follow-container'>
-        <img src="${users.users['@elonmusk'].avatarURL}" alt="avatar" class="avatar">
+        <img src="${user.avatarURL}" alt="avatar" class="avatar">
         <button class='follow-button' > Following </button>
         </div>
     </div>
 
     <div class="profile-info">
         <div class='profile-info-name'>
-            <h3>${users.users['@elonmusk'].displayName}</h3>
+            <h3>${user.displayName}</h3>
             <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
         </div>
 
-        <p>${users.users['@elonmusk'].userName}</p>
-        <p class='calendar-icon' >Joined ${users.users['@elonmusk'].joinedDate}</p>
+        <p>${user.userName}</p>
+        <p class='calendar-icon' >Joined ${user.joinedDate}</p>
     </div>
 
     <div class="profile-stats">
-        <p> <span>${formatNumber(users.users['@elonmusk'].followingCount)} </span> Following</p>
-        <p> <span> ${formatNumber(users.users['@elonmusk'].followerCount)} </span> Followers</p>
+        <p> <span>${formatNumber(user.followingCount)} </span> Following</p>
+        <p> <span> ${formatNumber(user.followerCount)} </span> Followers</p>
     </div>
 
     <div class="twitter-tabs">
@@ -120,44 +118,4 @@ tweetsContainer.addEventListener('click', (event) => {
 }
 );
 
-
-
-const timeLine = document.getElementsByClassName('timeline');
-
-function sortTweetsByDate(tweets) {
-    return tweets.sort((a, b) => {
-        return new Date(b.timestamp) - new Date(a.timestamp);
-    });
-}
-
-
-let sortedTweets = sortTweetsByDate(users.users['@elonmusk'].tweets);
-
-
-// console.log(sortedTweets);
-
-
-sortedTweets.forEach(tweet => {
-    const sortedTweetDiv = document.createElement('div');
-    sortedTweetDiv.innerHTML = `
-
-    <div> class="sorted-tweet-list-container">
-        <img src="${users.users['@elonmusk'].avatarURL}" alt="avatar" class="tweet-avatar">
-        <div class="sorted-tweet-content-wrapper">
-                <div class="tweet-header">
-                        ${users.users['@elonmusk'].displayName}
-                        <img src='/assets/twitter-verification-icon.png' alt='verification-icon' class='verification-icon' >
-                        ${users.users['@elonmusk'].userName}
-                </div>
-                    <p class = tweet-content> ${tweet.text}</p>
-                <div class="tweet-footer-time">
-                    ${tweet.timestamp}
-                </div>
-                </div>
-
-            </div>
-            `;
-    console.log(sortedTweetDiv);
-    // timeLine.appendChild(sortedTweetDiv);
-});
 

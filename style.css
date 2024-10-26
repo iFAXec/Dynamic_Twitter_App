@@ -8,9 +8,9 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.display-name {
-  margin-left: 50px;
-  display: flex;
+#main-container {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .verification-icon {
@@ -151,6 +151,6 @@ html {
 
 .tweet-footer-icons {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   margin: 20px;
 }
