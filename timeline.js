@@ -13,11 +13,10 @@ function sortTweetsByDate(tweets) {
 }
 
 const allTweets = [];
-
 for (let userName in users) {
     // console.log("🚀 ~ users[userName]:", users[userName]);
     // console.log("🚀 ~ userName:", userName);
-    for (let tweet in users[userName].tweets) {
+    for (let tweet of users[userName].tweets) {
         // console.log("🚀 ~ tweet:", tweet);
         allTweets.push({
             ...tweet,
@@ -31,9 +30,10 @@ for (let userName in users) {
 }
 
 console.log("🚀 ~ allTweets:", allTweets);
-
-
 let sortedTweets = sortTweetsByDate(allTweets);
+
+
+
 
 
 // console.log(sortedTweets);

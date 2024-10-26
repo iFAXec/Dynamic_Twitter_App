@@ -1,4 +1,5 @@
 import { users } from './tweets.js';
+console.log("🚀 ~ users:", users);
 
 const mainContainer = document.getElementById('main-container');
 
@@ -28,7 +29,7 @@ function getQueryParam(param) {
 
 const userParam = getQueryParam('user');
 const user = users[userParam];
-// console.log(user);
+console.log(user);
 
 
 
